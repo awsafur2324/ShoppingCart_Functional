@@ -89,6 +89,7 @@
     </header>
     <!-- main part -->
     <main class="p-2 md:p-4 mt-4">
+    <div id="homepage" class="">
       <!-- Custom slider -->
       <div
         id="indicators-carousel"
@@ -968,11 +969,12 @@
           </div>
         </div>
       </div>
-
+    </div>
+    </div>
       <!-- ----------------Cart Part------------ -->
       <div
         id="cartHolder"
-        class="flex flex-col md:flex-row gap-2 justify-center mx-auto text-center h-auto"
+        class="flex flex-col md:flex-row gap-2 justify-center mx-auto text-center h-auto hidden"
       >
         <table id="table" class="border w-full text-center font-poppis">
           <tr>
@@ -993,34 +995,36 @@
             <div
               class="flex flex-col justify-center p-2 gap-1 mt-4 text-center text-sm font-serif"
             >
-              <pre class="font-poppis text-sm font-semibold">Total Price : $<span id="totalPriceShow">100</span></pre>
+              <pre class="font-poppis text-sm font-semibold">Total Price : $<span id="totalPriceShow">000</span></pre>
               <pre
                 id="discount"
                 class="hidden font-poppis text-sm font-semibold"
               >Discount   : $<span id="discountShow">0</span></pre>
               <!-- input field -->
-              <div class=" relative">
+              <div id="promoFull" class=" relative">
                 <div
                   class="my-5 flex flex-row w-full justify-center items-center font-poppis text-slate-700 font-medium"
                 >
                   <input
+                  id="inputPromo"
                     class="p-3 w-full text-xs border-none focus:border-green-800"
                     type="text"
                     placeholder="Type a promo code"
                   />
                   <button
+                  id="promoActive"
                     class="btn shadow-md rounded-none text-xl p-2 text-white bg-green-800"
                   >
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
                   </button>
                 </div>
-                <ul class="hidden absolute top-[80%] w-full text-left p-2 bg-slate-800 text-white font-poppis">
-                  <li class="cursor-pointer p-2 border-b border-green-700"><span>YeaHoo!</span> (30%)</li>
-                  <li class="cursor-pointer p-2" ><span>CouponLover</span> (20%)</li>
+                <ul id="promoSection" class="hidden absolute top-[80%] w-full text-left p-2 bg-slate-800 text-white font-poppis">
+                  <li class="cursor-pointer p-2 border-b border-green-700"><span id="cupponLi">YeaHoo!</span> (30%)</li>
+                  <li class="cursor-pointer p-2" ><span id="cupponLi">CouponLover</span> (20%)</li>
                 </ul>
               </div>
               <hr />
-              <pre class="font-poppis text-sm font-semibold">Sub Total  : $<span id="subTotal" class="text-right">80</span></pre>
+              <pre class="font-poppis text-sm font-semibold">Sub Total  : $<span id="subTotal" class="text-right">000</span></pre>
             </div>
           </div>
         </div>

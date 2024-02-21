@@ -19,7 +19,9 @@ function calculateWithIncrement(e) {
 }
 
 //after clicking delete this function work
-
+const discount = document.getElementById('discount');
+const discountShow = document.getElementById('discountShow');
+const promoFull = document.getElementById("promoFull");
 function itemDelete(e) {
   const currentTr = e.target.parentNode.parentNode.parentNode;
   //take the next sibling
@@ -48,14 +50,18 @@ function itemDelete(e) {
   } else {
     totalPriceShow.innerText = "000";
     subTotal.innerText = "000";
+    discountShow.innerText="000";
+    discount.classList.add("hidden");
+    promoFull.classList.remove("hidden");
     initialTotal = 0;
   }
   //to remove disable from selected
   const imgCheckers = document.querySelectorAll("#imgChecker");
   for (let imgChecker of imgCheckers) {
-    if(imgChecker.src == currentTr.children[1].children[0].src){
-     const selectedItem = imgChecker.parentNode.parentNode.children[1].children[2].children[1];
-     selectedItem.removeAttribute("disabled");
+    if (imgChecker.src == currentTr.children[1].children[0].src) {
+      const selectedItem =
+        imgChecker.parentNode.parentNode.children[1].children[2].children[1];
+      selectedItem.removeAttribute("disabled");
     }
   }
 
@@ -63,4 +69,59 @@ function itemDelete(e) {
   table.removeChild(currentTr);
 }
 
-//Apply cuppon activity
+//Apply coupon activity
+const inputPromo = document.getElementById("inputPromo");
+const promoSection = document.getElementById("promoSection");
+inputPromo.onfocus = function () {
+  promoSection.classList.remove("hidden");
+};
+
+document.addEventListener("click", function (e) {
+  const promoFull = document.getElementById("promoFull");
+  clickTarget = e.target;
+  while (clickTarget) {
+    if (clickTarget == promoFull) {
+      return;
+    }
+    clickTarget = clickTarget.parentNode;
+  }
+  promoSection.classList.add("hidden");
+});
+
+//click on cuppon update it to input fild
+const cupponLis = document.querySelectorAll("#cupponLi");
+for (let cupon of cupponLis) {
+  cupon.addEventListener("click", function (e) {
+    const cuponValue = e.target.innerText;
+    inputPromo.value = cuponValue;
+    promoSection.classList.add("hidden");
+  });
+}
+
+
+//discount process
+const promoActive = document.getElementById('promoActive');
+promoActive.addEventListener('click' , function(){
+  manageDiscount();
+});
+
+function manageDiscount(){
+  let total = Number(totalPriceShow.innerText);
+  if(inputPromo.value == "YeaHoo!"){
+    let totalDis = (30/100) * total;
+    subTotal.innerText = total - totalDis;
+    discountShow.innerText = totalDis;
+    discount.classList.remove('hidden');
+    promoFull.classList.add("hidden");
+  }
+  else  if(inputPromo.value == "CouponLover"){
+    let totalDis = (20/100) * total;
+    subTotal.innerText = total - totalDis;
+    discountShow.innerText = totalDis;
+    discount.classList.remove('hidden');
+    promoFull.classList.add("hidden");
+  }
+  else{
+    alert("You Provide a wrong coupon");
+  }
+}

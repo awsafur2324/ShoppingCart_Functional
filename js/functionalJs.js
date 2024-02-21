@@ -37,3 +37,15 @@ function calculateInitialMoney(selectTarget) {
   subTotal.innerText = initialTotal;
 }
 
+//display cart page
+const cart_click = document.getElementById("cart_click");
+const homepage = document.getElementById("homepage");
+const cartHolder = document.getElementById("cartHolder");
+cart_click.addEventListener("click", function () {
+  homepage.classList.add("hidden");
+  cartHolder.classList.remove("hidden");
+});
+function homeActive(){
+  homepage.classList.remove("hidden");
+  cartHolder.classList.add("hidden");
+}
